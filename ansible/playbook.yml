@@ -2,6 +2,8 @@
 - name: run playbook to configure powershell
   hosts: localhost
   become: yes
+  roles:
+  - update-linux-server
   tasks:
   - name: Add MS key to trusted
     apt_key:
@@ -13,11 +15,10 @@
       state: present
       filename: microsoft.powershell
       update_cache: yes 
-  - name: Install PowerShell
+  - name: Install Packages
     apt:
-      name: powershell
-      state: present
-  - name: Install nginx
-    apt:
-      name: nginx
+      name:
+        - powershell
+        - nginx
+        - unzip
       state: present
