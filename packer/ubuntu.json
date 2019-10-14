@@ -31,6 +31,13 @@
       "script": "scripts/ansible.sh"
     },
     {
+      "type": "shell",
+      "inline": [
+        "echo '***** Installing requirements from Ansible Galaxy'",
+        "ansible-galaxy install git+https://github.com/MatthewJDavis/update-linux-server.git"
+      ]
+    },
+    {
       "type": "ansible-local", 
       "playbook_file": "../ansible/playbook.yml"
     },
